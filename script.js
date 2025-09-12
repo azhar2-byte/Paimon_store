@@ -63,28 +63,13 @@ function loadData() {
         accounts = [
             {
                 id: 1,
-                name: 'Epic Assassin Account',
-                description: 'High-level assassin main with rare skins. Includes Gusion Legend skin and multiple heroes.',
-                image: 'https://via.placeholder.com/300x200/2DA9E0/FFFFFF?text=Epic+Assassin',
+                name: 'test',
+                description: 'testing',
+                image: 'file.jpg',
                 price: 299.99,
                 status: 'stock'
             },
-            {
-                id: 2,
-                name: 'Mythic Tank Specialist',
-                description: 'Mythic rank account specialized in tank heroes. Perfect win rate in ranked games.',
-                image: 'https://via.placeholder.com/300x200/2DA9E0/FFFFFF?text=Mythic+Tank',
-                price: 599.99,
-                status: 'stock'
-            },
-            {
-                id: 3,
-                name: 'Legend Marksman Pro',
-                description: 'Legend rank marksman account with all meta heroes and premium skins.',
-                image: 'https://via.placeholder.com/300x200/2DA9E0/FFFFFF?text=Legend+MM',
-                price: 399.99,
-                status: 'sold'
-            }
+           
         ];
         saveData();
     }
@@ -473,4 +458,5 @@ window.hideAddAccountForm = hideAddAccountForm;
 window.editAccount = editAccount;
 window.toggleAccountStatus = toggleAccountStatus;
 window.deleteAccount = deleteAccount;
+
 window.saveSettings = saveSettings;
