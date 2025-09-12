@@ -88,7 +88,7 @@ function loadSettings() {
     // Update WhatsApp number in contact link
     const contactLink = document.querySelector('.whatsapp-contact');
     if (contactLink) {
-        contactLink.href = `https://wa.me/${settings.whatsappNumber}`;
+        contactLink.href = `https://wa.me/${601174917685}`;
     }
     
     // Update admin panel settings
@@ -460,4 +460,5 @@ window.toggleAccountStatus = toggleAccountStatus;
 window.deleteAccount = deleteAccount;
 
 window.saveSettings = saveSettings;
+
 
