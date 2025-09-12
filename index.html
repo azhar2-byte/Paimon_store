@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://public-frontend-cos.metadl.com/mgx/img/favicon.png" type="image/png">
+    <title>Paimon Store - MLBB Accounts</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-section">
+                <img src="https://via.placeholder.com/120x40/2DA9E0/FFFFFF?text=PAIMON+STORE" alt="Paimon Store Logo" class="logo">
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active" data-section="home">Home</a>
+                <a href="#stock" class="nav-link" data-section="stock">Stock</a>
+                <a href="#sold" class="nav-link" data-section="sold">Sold</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="container">
+                    <h1 class="hero-title">Paimon Store</h1>
+                    <p class="hero-tagline">MLBB accounts — verified & ready</p>
+                    <button class="cta-button" onclick="showSection('stock')">Browse Stock</button>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <div class="container">
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h3>Purchase Process</h3>
+                            <ol>
+                                <li>Browse our verified MLBB accounts</li>
+                                <li>Click "Buy" on your preferred account</li>
+                                <li>Complete payment via WhatsApp</li>
+                                <li>Receive account details instantly</li>
+                            </ol>
+                        </div>
+                        <div class="info-card">
+                            <h3>Why Choose Us?</h3>
+                            <ul>
+                                <li>✓ All accounts verified and secure</li>
+                                <li>✓ Instant delivery after payment</li>
+                                <li>✓ Competitive prices</li>
+                                <li>✓ 24/7 customer support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stock Section -->
+        <section id="stock" class="section">
+            <div class="container">
+                <h2 class="section-title">Available Accounts</h2>
+                <div id="stock-grid" class="account-grid">
+                    <!-- Account cards will be populated by JavaScript -->
+                </div>
+                <div id="no-stock" class="no-items" style="display: none;">
+                    <p>No accounts available at the moment. Check back soon!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sold Section -->
+        <section id="sold" class="section">
+            <div class="container">
+                <h2 class="section-title">Sold Accounts</h2>
+                <div id="sold-grid" class="account-grid">
+                    <!-- Sold account cards will be populated by JavaScript -->
+                </div>
+                <div id="no-sold" class="no-items" style="display: none;">
+                    <p>No sold accounts to display yet.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Paimon Store. All rights reserved.</p>
+            <a href="https://wa.me/60123456789" class="whatsapp-contact" target="_blank">
+                Contact Admin via WhatsApp
+            </a>
+        </div>
+    </footer>
+
+    <!-- Admin Access Button (Hidden) -->
+    <button id="admin-access" class="admin-access-btn" onclick="showAdminPanel()">Admin</button>
+
+    <!-- Admin Panel Modal -->
+    <div id="admin-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAdminPanel()">&times;</span>
+            <h2>Admin Panel</h2>
+            
+            <!-- Admin Login -->
+            <div id="admin-login" class="admin-section">
+                <h3>Admin Login</h3>
+                <input type="password" id="admin-password" placeholder="Enter admin password">
+                <button onclick="adminLogin()">Login</button>
+            </div>
+
+            <!-- Admin Dashboard -->
+            <div id="admin-dashboard" class="admin-section" style="display: none;">
+                <div class="admin-tabs">
+                    <button class="tab-btn active" onclick="showAdminTab('accounts')">Manage Accounts</button>
+                    <button class="tab-btn" onclick="showAdminTab('settings')">Settings</button>
+                </div>
+
+                <!-- Accounts Management -->
+                <div id="admin-accounts" class="admin-tab active">
+                    <div class="admin-controls">
+                        <button onclick="showAddAccountForm()">Add New Account</button>
+                        <div class="price-lock">
+                            <input type="password" id="price-unlock-code" placeholder="Enter code to unlock price editing">
+                            <button onclick="unlockPriceEditing()">Unlock Prices</button>
+                            <span id="price-lock-status">🔒 Price editing locked</span>
+                        </div>
+                    </div>
+                    
+                    <div id="add-account-form" class="form-section" style="display: none;">
+                        <h4>Add New Account</h4>
+                        <form id="account-form">
+                            <input type="text" id="account-name" placeholder="Account Name" required>
+                            <textarea id="account-description" placeholder="Account Description" required></textarea>
+                            <input type="file" id="account-image" accept="image/*">
+                            <input type="number" id="account-price" placeholder="Price" step="0.01" required>
+                            <div class="form-buttons">
+                                <button type="submit">Add Account</button>
+                                <button type="button" onclick="hideAddAccountForm()">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="admin-accounts-list" class="admin-accounts-list">
+                        <!-- Admin account list will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Settings -->
+                <div id="admin-settings" class="admin-tab">
+                    <h4>Store Settings</h4>
+                    <div class="setting-item">
+                        <label for="whatsapp-number">WhatsApp Number (without +):</label>
+                        <input type="text" id="whatsapp-number" placeholder="60123456789">
+                        <button onclick="saveSettings()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,672 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8fdff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.header {
+    background: linear-gradient(135deg, #E6F6FF 0%, #B3E5FC 100%);
+    box-shadow: 0 2px 10px rgba(45, 169, 224, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    border-radius: 8px;
+}
+
+.nav {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #2DA9E0;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: #2DA9E0;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Main Content */
+.main {
+    margin-top: 80px;
+    min-height: calc(100vh - 160px);
+}
+
+.section {
+    display: none;
+    padding: 40px 0;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #E6F6FF 0%, #2DA9E0 100%);
+    padding: 80px 0;
+    text-align: center;
+    color: white;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-tagline {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    opacity: 0.95;
+}
+
+.cta-button {
+    background: white;
+    color: #2DA9E0;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Info Section */
+.info-section {
+    padding: 60px 0;
+    background: white;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.info-card {
+    background: #E6F6FF;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(45, 169, 224, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.info-card h3 {
+    color: #2DA9E0;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+.info-card ol,
+.info-card ul {
+    margin-left: 20px;
+}
+
+.info-card li {
+    margin-bottom: 8px;
+}
+
+/* Section Titles */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2DA9E0;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+/* Account Grid */
+.account-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.account-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(45, 169, 224, 0.15);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.account-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(45, 169, 224, 0.25);
+    border-color: #2DA9E0;
+}
+
+.account-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background: linear-gradient(45deg, #E6F6FF, #B3E5FC);
+}
+
+.account-info {
+    padding: 25px;
+}
+
+.account-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2DA9E0;
+    margin-bottom: 10px;
+}
+
+.account-description {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.account-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.account-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2DA9E0;
+}
+
+.buy-button {
+    background: linear-gradient(135deg, #2DA9E0, #1976D2);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.buy-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(45, 169, 224, 0.4);
+}
+
+.sold-badge {
+    background: #ff6b6b;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* No Items Message */
+.no-items {
+    text-align: center;
+    padding: 60px 20px;
+    color: #666;
+    font-size: 1.2rem;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, #2DA9E0, #1976D2);
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.whatsapp-contact {
+    color: white;
+    text-decoration: none;
+    background: rgba(255,255,255,0.2);
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-contact:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+}
+
+/* Admin Access Button */
+.admin-access-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #2DA9E0;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(45, 169, 224, 0.3);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.admin-access-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(45, 169, 224, 0.4);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #2DA9E0;
+}
+
+/* Admin Panel Styles */
+.admin-section h2 {
+    color: #2DA9E0;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.admin-section h3 {
+    color: #2DA9E0;
+    margin-bottom: 20px;
+}
+
+.admin-section input,
+.admin-section textarea,
+.admin-section select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #E6F6FF;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.admin-section input:focus,
+.admin-section textarea:focus {
+    outline: none;
+    border-color: #2DA9E0;
+}
+
+.admin-section button {
+    background: #2DA9E0;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.admin-section button:hover {
+    background: #1976D2;
+    transform: translateY(-2px);
+}
+
+/* Admin Tabs */
+.admin-tabs {
+    display: flex;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #E6F6FF;
+}
+
+.tab-btn {
+    background: none !important;
+    border: none !important;
+    padding: 15px 25px !important;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666 !important;
+    border-bottom: 3px solid transparent !important;
+    transition: all 0.3s ease;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+    color: #2DA9E0 !important;
+    border-bottom-color: #2DA9E0 !important;
+}
+
+.admin-tab {
+    display: none;
+}
+
+.admin-tab.active {
+    display: block;
+}
+
+/* Admin Controls */
+.admin-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.price-lock {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.price-lock input {
+    width: 200px;
+    margin-bottom: 0;
+}
+
+.price-lock button {
+    margin-bottom: 0;
+}
+
+#price-lock-status {
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 20px;
+    background: #ffebee;
+    color: #c62828;
+}
+
+#price-lock-status.unlocked {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+/* Form Sections */
+.form-section {
+    background: #E6F6FF;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Admin Accounts List */
+.admin-accounts-list {
+    display: grid;
+    gap: 20px;
+}
+
+.admin-account-item {
+    background: #f8fdff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #E6F6FF;
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 20px;
+    align-items: center;
+}
+
+.admin-account-image {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #E6F6FF, #B3E5FC);
+}
+
+.admin-account-info h4 {
+    color: #2DA9E0;
+    margin-bottom: 5px;
+}
+
+.admin-account-info p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.admin-account-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-account-actions button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.edit-btn {
+    background: #ff9800 !important;
+}
+
+.delete-btn {
+    background: #f44336 !important;
+}
+
+.toggle-btn {
+    background: #4caf50 !important;
+}
+
+.toggle-btn.sold {
+    background: #9e9e9e !important;
+}
+
+/* Settings */
+.setting-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.setting-item label {
+    font-weight: 600;
+    color: #2DA9E0;
+    min-width: 200px;
+}
+
+.setting-item input {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 0;
+}
+
+.setting-item button {
+    margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-tagline {
+        font-size: 1.1rem;
+    }
+    
+    .nav {
+        gap: 15px;
+    }
+    
+    .nav-link {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .account-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .admin-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .price-lock {
+        justify-content: center;
+    }
+    
+    .admin-account-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .admin-account-actions {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .setting-item {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .setting-item label {
+        min-width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .hero {
+        padding: 60px 0;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .modal-content {
+        margin: 10% auto;
+        padding: 20px;
+        width: 95%;
+    }
+    
+    .admin-tabs {
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        text-align: center;
+    }
+}
