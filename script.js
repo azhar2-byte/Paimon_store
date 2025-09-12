@@ -1,6 +1,6 @@
 // Paimon Store - Main JavaScript File
 
-// Global variables
+
 let accounts = [];
 let isAdminLoggedIn = false;
 let isPriceEditingUnlocked = false;
@@ -10,7 +10,7 @@ let settings = {
     adminPassword: 'admin123'
 };
 
-// Initialize the application
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Paimon Store initialized');
     loadData();
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadSettings();
 });
 
-// Navigation functionality
+
 function setupNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
@@ -28,7 +28,7 @@ function setupNavigation() {
             const section = this.getAttribute('data-section');
             showSection(section);
             
-            // Update active nav link
+        
             navLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');
         });
@@ -36,30 +36,30 @@ function setupNavigation() {
 }
 
 function showSection(sectionName) {
-    // Hide all sections
+   
     const sections = document.querySelectorAll('.section');
     sections.forEach(section => section.classList.remove('active'));
     
-    // Show target section
+   
     const targetSection = document.getElementById(sectionName);
     if (targetSection) {
         targetSection.classList.add('active');
         
-        // Re-render accounts when showing stock or sold sections
+        
         if (sectionName === 'stock' || sectionName === 'sold') {
             renderAccounts();
         }
     }
 }
 
-// Data management
+
 function loadData() {
-    // Load accounts from localStorage
+ 
     const savedAccounts = localStorage.getItem('paimon_accounts');
     if (savedAccounts) {
         accounts = JSON.parse(savedAccounts);
     } else {
-        // Initialize with sample data
+
         accounts = [
             {
                 id: 1,
@@ -85,13 +85,13 @@ function loadSettings() {
         settings = { ...settings, ...JSON.parse(savedSettings) };
     }
     
-    // Update WhatsApp number in contact link
+
     const contactLink = document.querySelector('.whatsapp-contact');
     if (contactLink) {
         contactLink.href = `https://wa.me/${601174917685}`;
     }
     
-    // Update admin panel settings
+   
     const whatsappInput = document.getElementById('whatsapp-number');
     if (whatsappInput) {
         whatsappInput.value = settings.whatsappNumber;
@@ -105,7 +105,7 @@ function saveSettings() {
         settings.whatsappNumber = whatsappNumber;
         localStorage.setItem('paimon_settings', JSON.stringify(settings));
         
-        // Update contact link
+     
         const contactLink = document.querySelector('.whatsapp-contact');
         if (contactLink) {
             contactLink.href = `https://wa.me/${whatsappNumber}`;
@@ -117,7 +117,7 @@ function saveSettings() {
     }
 }
 
-// Account rendering
+
 function renderAccounts() {
     renderStockAccounts();
     renderSoldAccounts();
@@ -229,7 +229,7 @@ function adminLogin() {
 }
 
 function showAdminTab(tabName) {
-    // Update tab buttons
+ 
     const tabBtns = document.querySelectorAll('.tab-btn');
     tabBtns.forEach(btn => btn.classList.remove('active'));
     event.target.classList.add('active');
@@ -259,7 +259,7 @@ function unlockPriceEditing() {
     }
 }
 
-// Account Management
+
 function showAddAccountForm() {
     document.getElementById('add-account-form').style.display = 'block';
     document.getElementById('account-form').reset();
@@ -271,7 +271,7 @@ function hideAddAccountForm() {
     currentEditingAccount = null;
 }
 
-// Handle account form submission
+
 document.addEventListener('DOMContentLoaded', function() {
     const accountForm = document.getElementById('account-form');
     if (accountForm) {
@@ -372,12 +372,12 @@ function editAccount(accountId) {
     
     currentEditingAccount = account;
     
-    // Populate form
+
     document.getElementById('account-name').value = account.name;
     document.getElementById('account-description').value = account.description;
     document.getElementById('account-price').value = account.price;
     
-    // Disable price editing if not unlocked
+   
     const priceInput = document.getElementById('account-price');
     if (!isPriceEditingUnlocked) {
         priceInput.disabled = true;
@@ -389,7 +389,7 @@ function editAccount(accountId) {
     
     showAddAccountForm();
     
-    // Update form title
+    
     const formTitle = document.querySelector('#add-account-form h4');
     if (formTitle) {
         formTitle.textContent = 'Edit Account';
@@ -415,7 +415,7 @@ function deleteAccount(accountId) {
     }
 }
 
-// Close modal when clicking outside
+
 window.addEventListener('click', function(event) {
     const modal = document.getElementById('admin-modal');
     if (event.target === modal) {
@@ -423,7 +423,7 @@ window.addEventListener('click', function(event) {
     }
 });
 
-// Utility functions
+
 function validateInput(input, type = 'text') {
     const value = input.value.trim();
     
@@ -439,14 +439,14 @@ function validateInput(input, type = 'text') {
 }
 
 function showError(message) {
-    alert(message); // Simple error display - can be enhanced with custom modals
+    alert(message); 
 }
 
 function showSuccess(message) {
-    alert(message); // Simple success display - can be enhanced with custom modals
+    alert(message);
 }
 
-// Export functions for global access
+
 window.showSection = showSection;
 window.showAdminPanel = showAdminPanel;
 window.closeAdminPanel = closeAdminPanel;
@@ -460,5 +460,6 @@ window.toggleAccountStatus = toggleAccountStatus;
 window.deleteAccount = deleteAccount;
 
 window.saveSettings = saveSettings;
+
 
 
