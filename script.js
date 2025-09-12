@@ -6,7 +6,7 @@ let isAdminLoggedIn = false;
 let isPriceEditingUnlocked = false;
 let currentEditingAccount = null;
 let settings = {
-    whatsappNumber: '60123456789',
+    whatsappNumber: '601174917685',
     adminPassword: 'admin123'
 };
 
@@ -460,3 +460,4 @@ window.toggleAccountStatus = toggleAccountStatus;
 window.deleteAccount = deleteAccount;
 
 window.saveSettings = saveSettings;
+
