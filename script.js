@@ -1,30 +1,3 @@
-// --- Firebase Setup ---
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-
-// --- Firebase Config ---
-const firebaseConfig = {
-  apiKey: "AIzaSyByb3mf-E3wLVXeInsyxuwNWr1Iks9qANg",
-  authDomain: "paimon-store-d5ad0.firebaseapp.com",
-  projectId: "paimon-store-d5ad0",
-  storageBucket: "paimon-store-d5ad0.firebasestorage.app",
-  messagingSenderId: "97817236038",
-  appId: "1:97817236038:web:7c70c28c4dc2e2cefa7047",
-  measurementId: "G-45M1NJ5XH2"
-};
-
-// Init Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
 // Paimon Store - Main JavaScript File
 
 
@@ -80,35 +53,25 @@ function showSection(sectionName) {
 }
 
 
-async function loadData() {
-    const querySnapshot = await getDocs(collection(db, "accounts"));
-    accounts = [];
-    querySnapshot.forEach((docSnap) => {
-        accounts.push({ id: docSnap.id, ...docSnap.data() });
-    });
-    renderAccounts();
-    renderAdminAccounts();
-}
-
-async function saveAccountToFirestore(accountData) {
-    if (currentEditingAccount) {
-        const ref = doc(db, "accounts", currentEditingAccount.id);
-        await updateDoc(ref, accountData);
+function loadData() {
+ 
+    const savedAccounts = localStorage.getItem('paimon_accounts');
+    if (savedAccounts) {
+        accounts = JSON.parse(savedAccounts);
     } else {
-        await addDoc(collection(db, "accounts"), accountData);
-    }
-    await loadData();
-}
 
-async function deleteAccountFromFirestore(accountId) {
-    await deleteDoc(doc(db, "accounts", accountId));
-    await loadData();
-}
-
+        accounts = [
+            {
+                id: 1,
+                name: 'test',
+                description: 'testing',
+                image: 'file.jpg',
+                price: 299.99,
+                status: 'stock'
+            },
            
         ];
         saveData();
-
     }
 }
 
@@ -182,7 +145,7 @@ function renderStockAccounts() {
                 <h3 class="account-name">${account.name}</h3>
                 <p class="account-description">${account.description}</p>
                 <div class="account-footer">
-                    <span class="account-price">₹${account.price.toFixed(2)}</span>
+                    <span class="account-price">$${account.price.toFixed(2)}</span>
                     <a href="${generateWhatsAppLink(account)}" class="buy-button" target="_blank">
                         Buy Now
                     </a>
@@ -214,7 +177,7 @@ function renderSoldAccounts() {
                 <h3 class="account-name">${account.name}</h3>
                 <p class="account-description">${account.description}</p>
                 <div class="account-footer">
-                    <span class="account-price">₹${account.price.toFixed(2)}</span>
+                    <span class="account-price">$${account.price.toFixed(2)}</span>
                     <span class="sold-badge">SOLD</span>
                 </div>
             </div>
@@ -224,7 +187,7 @@ function renderSoldAccounts() {
 
 // WhatsApp integration
 function generateWhatsAppLink(account) {
-    const message = `Hi, I want to buy: ${account.name} — Price: ₹${account.price.toFixed(2)}`;
+    const message = `Hi, I want to buy: ${account.name} — Price: $${account.price.toFixed(2)}`;
     return `https://wa.me/${settings.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
@@ -367,8 +330,7 @@ function finalizeAccountSave(accountData) {
         accounts.push(accountData);
     }
     
-   saveAccountToFirestore(accountData);
-
+    saveData();
     renderAccounts();
     renderAdminAccounts();
     hideAddAccountForm();
@@ -390,7 +352,7 @@ function renderAdminAccounts() {
             <div class="admin-account-info">
                 <h4>${account.name}</h4>
                 <p>${account.description}</p>
-                <p><strong>Price:</strong> ₹${account.price.toFixed(2)}</p>
+                <p><strong>Price:</strong> $${account.price.toFixed(2)}</p>
                 <p><strong>Status:</strong> ${account.status.toUpperCase()}</p>
             </div>
             <div class="admin-account-actions">
@@ -439,7 +401,7 @@ function toggleAccountStatus(accountId) {
     if (!account) return;
     
     account.status = account.status === 'stock' ? 'sold' : 'stock';
-    saveAccountToFirestore(account);
+    saveData();
     renderAccounts();
     renderAdminAccounts();
 }
@@ -447,7 +409,7 @@ function toggleAccountStatus(accountId) {
 function deleteAccount(accountId) {
     if (confirm('Are you sure you want to delete this account? This action cannot be undone.')) {
         accounts = accounts.filter(acc => acc.id !== accountId);
-       deleteAccountFromFirestore(accountId);
+        saveData();
         renderAccounts();
         renderAdminAccounts();
     }
@@ -498,8 +460,6 @@ window.toggleAccountStatus = toggleAccountStatus;
 window.deleteAccount = deleteAccount;
 
 window.saveSettings = saveSettings;
-
-
 
 
 
